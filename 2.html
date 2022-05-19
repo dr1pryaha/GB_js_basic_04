@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Homework</title>
-</head>
-<body>
-<!--
+  <head>
+    <meta charset="UTF-8" />
+    <title>Homework</title>
+  </head>
+  <body>
+    <!--
 Обязательное задание.
 
 Необходимо данное задание выполнить в es5 стиле и в es6 стиле.
@@ -47,10 +47,113 @@
 что-нибудь пропустить.
 4. Если непонятно условие - задайте вопрос.
 -->
-<script>
-  "use strict";
+    <script>
+      "use strict";
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
-</script>
-</body>
+      //ES5
+      function PostES5(name, text) {
+        this.name = name;
+        this.text = text;
+        this.dateOfChange = new Date();
+      }
+
+      PostES5.prototype.edit = function (text) {
+        this.text = text;
+        this.dateOfChange = new Date();
+      };
+
+      const resultPostES5 = new PostES5("Антон", "Первый комментарий");
+      console.log(resultPostES5);
+
+      // resultPostES5.edit("Измененный комментарий");
+      // console.log(resultPostES5);
+
+      //Решил показать, что действительно меняется время измененного поста
+      setTimeout(() => {
+        resultPostES5.edit("Измененный комментарий");
+        console.log(resultPostES5);
+      }, 1000);
+
+      function AttachedPostES5(name, text) {
+        PostES5.call(this, name, text);
+        this.highlighted = false;
+      }
+
+      AttachedPostES5.prototype = Object.create(PostES5.prototype);
+      AttachedPostES5.prototype.constructor = AttachedPostES5;
+
+      AttachedPostES5.prototype.makeTextHighlighted = function () {
+        this.highlighted = true;
+        this.dateOfChange = new Date();
+      };
+
+      const resultAttachedPostES5 = new AttachedPostES5(
+        "Антон",
+        "Первый закрепленный комментарий"
+      );
+
+      setTimeout(() => {
+        console.log(resultAttachedPostES5);
+      }, 2000);
+
+      setTimeout(() => {
+        resultAttachedPostES5.makeTextHighlighted();
+        resultAttachedPostES5.edit("Измененный закрепленный комментарий");
+        console.log(resultAttachedPostES5);
+      }, 3000);
+
+      //ES6
+      class PostES6 {
+        constructor(name, text) {
+          this.name = name;
+          this.text = text;
+          this.dateOfChange = new Date();
+        }
+
+        edit(text) {
+          this.text = text;
+          this.dateOfChange = new Date();
+        }
+      }
+
+      const resultPostES6 = new PostES6("Санек", "Пацанский комментарий");
+      setTimeout(() => {
+        console.log(resultPostES6);
+      }, 4000);
+
+      // resultPostES6.edit("Измененный комментарий");
+      // console.log(resultPostES6);
+
+      setTimeout(() => {
+        resultPostES6.edit("Измененный пацанский комментарий");
+        console.log(resultPostES6);
+      }, 5000);
+
+      class AttachedPostES6 extends PostES6 {
+        highlighted = false;
+
+        makeTextHighlighted() {
+          this.highlighted = true;
+          this.dateOfChange = new Date();
+        }
+      }
+
+      const resultAttachedPostES6 = new AttachedPostES6(
+        "Санек",
+        "Первый закрепленный пацанский комментарий"
+      );
+
+      setTimeout(() => {
+        console.log(resultAttachedPostES6);
+      }, 6000);
+
+      setTimeout(() => {
+        resultAttachedPostES6.makeTextHighlighted();
+        resultAttachedPostES6.edit(
+          "Измененный закрепленный пацанский комментарий"
+        );
+        console.log(resultAttachedPostES6);
+      }, 7000);
+    </script>
+  </body>
 </html>
