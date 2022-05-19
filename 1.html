@@ -21,13 +21,13 @@
       "use strict";
 
       //ES5
-      function ProductES5(productName, productPrice) {
-        this.productName = productName;
-        this.productPrice = productPrice;
+      function ProductES5(тame, price) {
+        this.name = name;
+        this.price = price;
       }
 
       ProductES5.prototype.make25Discount = function () {
-        this.productPrice -= this.productPrice * 0.25;
+        this.price -= this.price * 0.25;
       };
 
       let resultObjES5 = new ProductES5("Яблоки", 100);
@@ -36,13 +36,13 @@
 
       //ES6
       class ProductES6 {
-        constructor(productName, productPrice) {
-          this.productName = productName;
-          this.productPrice = productPrice;
+        constructor(name, price) {
+          this.name = name;
+          this.price = price;
         }
 
         make25DiscountES6() {
-          this.productPrice -= this.productPrice * 0.25;
+          this.price -= this.price * 0.25;
         }
       }
 

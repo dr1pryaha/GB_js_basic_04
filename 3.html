@@ -31,7 +31,7 @@
     <script>
       "use strict";
 
-      function getDigitsOfNumber(numInt) {
+      function GetDigitsOfNumber(numInt) {
         if (numInt < 0 || numInt > 999) {
           console.error("Число не соответствует требуемому диапазону!");
         } else {
@@ -41,13 +41,13 @@
         }
       }
 
-      let resultDigitsOfNumber = new getDigitsOfNumber(523);
+      const resultDigitsOfNumber = new GetDigitsOfNumber(523);
       console.log(resultDigitsOfNumber);
 
-      let resultOfBigNumber = new getDigitsOfNumber(1623);
+      const resultOfBigNumber = new GetDigitsOfNumber(1623);
       console.log(resultOfBigNumber);
 
-      let resultOfNegativeNumber = new getDigitsOfNumber(-623);
+      const resultOfNegativeNumber = new GetDigitsOfNumber(-623);
       console.log(resultOfNegativeNumber);
     </script>
   </body>

@@ -62,7 +62,7 @@
         this.dateOfChange = new Date();
       };
 
-      let resultPostES5 = new PostES5("Антон", "Первый комментарий");
+      const resultPostES5 = new PostES5("Антон", "Первый комментарий");
       console.log(resultPostES5);
 
       // resultPostES5.edit("Измененный комментарий");
@@ -84,9 +84,10 @@
 
       AttachedPostES5.prototype.makeTextHighlighted = function () {
         this.highlighted = true;
+        this.dateOfChange = new Date();
       };
 
-      let resultAttachedPostES5 = new AttachedPostES5(
+      const resultAttachedPostES5 = new AttachedPostES5(
         "Антон",
         "Первый закрепленный комментарий"
       );
@@ -115,7 +116,7 @@
         }
       }
 
-      let resultPostES6 = new PostES6("Санек", "Пацанский комментарий");
+      const resultPostES6 = new PostES6("Санек", "Пацанский комментарий");
       setTimeout(() => {
         console.log(resultPostES6);
       }, 4000);
@@ -133,10 +134,11 @@
 
         makeTextHighlighted() {
           this.highlighted = true;
+          this.dateOfChange = new Date();
         }
       }
 
-      let resultAttachedPostES6 = new AttachedPostES6(
+      const resultAttachedPostES6 = new AttachedPostES6(
         "Санек",
         "Первый закрепленный пацанский комментарий"
       );
